@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.88c51277.css",
-    "main.js": "/static/js/main.b6dd35dd.js",
+    "main.css": "/static/css/main.3c6fcde0.css",
+    "main.js": "/static/js/main.b4f6e84c.js",
     "static/js/453.2d57a652.chunk.js": "/static/js/453.2d57a652.chunk.js",
     "static/media/private.png": "/static/media/private.bde39142fe2b136c6d38.png",
     "static/media/ubuntu.ttf": "/static/media/ubuntu.4a3116a28a38a887266c.ttf",
@@ -11,12 +11,12 @@
     "static/media/topSmallPolygons.svg": "/static/media/topSmallPolygons.d28f1b58d7a91b5f9c943f7d9ab09db0.svg",
     "index.html": "/index.html",
     "static/media/PolygonBig.svg": "/static/media/PolygonBig.e41bc1e74ae37055607379bf7268d358.svg",
-    "main.88c51277.css.map": "/static/css/main.88c51277.css.map",
-    "main.b6dd35dd.js.map": "/static/js/main.b6dd35dd.js.map",
+    "main.3c6fcde0.css.map": "/static/css/main.3c6fcde0.css.map",
+    "main.b4f6e84c.js.map": "/static/js/main.b4f6e84c.js.map",
     "453.2d57a652.chunk.js.map": "/static/js/453.2d57a652.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.88c51277.css",
-    "static/js/main.b6dd35dd.js"
+    "static/css/main.3c6fcde0.css",
+    "static/js/main.b4f6e84c.js"
   ]
 }

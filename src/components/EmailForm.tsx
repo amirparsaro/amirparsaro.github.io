@@ -95,38 +95,38 @@ export const EmailForm = () => {
         <>
             {SuccessPortal}
             {ErrorPortal}
-            <div className="z-[150] glass-div w-[40%] flex flex-col justify-center text-[#D7D7D7] gap-40 p-6">
+            <div className="z-[150] glass-div w-[80%] md:w-[65%] lg:w-[50%] flex flex-col justify-center text-[#D7D7D7] gap-40 p-6">
                 <form id="email-form" ref={formRef} onSubmit={sendEmail}>
                     <div className="flex flex-col gap-3">
-                        <p className="text-2xl">Contact Form</p>
+                        <p className="text-xl md:text-2xl">Contact Form</p>
                         <div className="flex flex-col gap-1">
-                            <p className="text-xl">Name</p>
+                            <p className="text-lg md:text-xl">Name</p>
                             <input type="text" name="user_name" required
-                                   className="w-full h-[50px] text-lg p-3 rounded-lg bg-[#333333]"
+                                   className="w-full h-[50px] text-md md:text-lg p-3 rounded-lg bg-[#333333]"
                                    placeholder="Your name"></input>
                         </div>
                         <div className="flex flex-col gap-1">
-                            <p className="text-xl">Email</p>
+                            <p className="text-lg md:text-xl">Email</p>
                             <input type="email" name="user_email" required
-                                   className="w-full h-[50px] text-lg p-3 rounded-lg bg-[#333333]"
+                                   className="w-full h-[50px] text-md md:text-lg p-3 rounded-lg bg-[#333333]"
                                    placeholder="Your Email Address"></input>
                         </div>
                         <div className="flex flex-col gap-1">
-                            <p className="text-xl">Message</p>
+                            <p className="text-lg md:text-xl">Message</p>
                             <textarea required name="message"
-                                      className="w-full h-[150px] text-lg p-3 rounded-lg bg-[#333333]"
+                                      className="w-full h-[150px] text-md md:text-lg p-3 rounded-lg bg-[#333333]"
                                       placeholder="Type your message here..."></textarea>
                         </div>
                         <div className="flex justify-end w-full gap-3">
                             <button
                                 type="reset"
-                                className="w-[100px] flex items-center justify-center cursor-pointer p-4 text-lg bg-[#111111] rounded-xl hover:bg-[#1c1c1c] transition"
+                                className="w-[75px] md:w-[100px] flex items-center justify-center cursor-pointer p-3 md:p-4 text-md md:text-lg bg-[#111111] rounded-xl hover:bg-[#1c1c1c] transition"
                             >
                                 Clear
                             </button>
                             <button
                                 type="submit"
-                                className="w-[100px] flex items-center justify-center cursor-pointer p-4 text-lg bg-[#111111] rounded-xl hover:bg-[#1c1c1c] transition"
+                                className="w-[75px] md:w-[100px] flex items-center justify-center cursor-pointer p-3 md:p-4 text-md md:text-lg bg-[#111111] rounded-xl hover:bg-[#1c1c1c] transition"
                             >
                                 Submit
                             </button>

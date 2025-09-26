@@ -16,7 +16,7 @@ export const NavBtn = ({text, selected, handleBtnClickNavbar, option} :NavBtnPro
              hover:border-[#515151] rounded-full hover:bg-[#303030] cursor-pointer transition
              duration-200 ${selected ? "border-[#515151] bg-[#303030]" : "border-[rgba(0,0,0,0)]"}`}
         >
-            <p className="text-[#D8D8D8]">{text}</p>
+            <p className="text-[#D8D8D8] text-xs md:text-sm lg:text-base xl:text-base 2xl:text-base">{text}</p>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState, useLayoutEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {Navbar} from "./components/Navbar";
@@ -15,9 +15,19 @@ import {Fade} from "@mui/material";
 import Alert from "@mui/material/Alert";
 
 function App() {
-    const [leftPolyStyle, setLeftPolyStyle] = useState("top-1/2 -translate-y-1/2 left-0 -translate-x-[400px]");
-    const [rightPolyStyle, setRightPolyStyle] = useState("top-1/2 -translate-y-1/2 right-0 -translate-x-[-400px]");
+    const [leftPolyStyle, setLeftPolyStyle] = useState("-translate-y-1/2 translate-x-[-275px] sm:translate-x-[-250px] md:translate-x-[-300px] lg:translate-x-[-400px]");
+    const [rightPolyStyle, setRightPolyStyle] = useState("-translate-y-1/2 translate-x-[275px] sm:translate-x-[250px] md:translate-x-[300px] lg:translate-x-[400px]");
     const [successAlert, setSuccessAlert] = useState<boolean>(false);
+    const thirdSectionRef = useRef<HTMLDivElement>(null);
+    const [thirdSectionHeight, setThirdSectionHeight] = useState(0);
+
+    useLayoutEffect(() => {
+        if (thirdSectionRef.current) {
+            const rect = thirdSectionRef.current.getBoundingClientRect();
+            const rectHeight = rect.bottom - rect.top;
+            setThirdSectionHeight(rectHeight);
+        }
+    }, []);
 
     useEffect(() => {
         if (successAlert) {
@@ -28,11 +38,11 @@ function App() {
 
     function handleScrollSection(option: number) {
         if (option === 1) {
-            setLeftPolyStyle("-translate-y-1/2 translate-x-[-400px]");
-            setRightPolyStyle("-translate-y-1/2 translate-x-[400px]");
+            setLeftPolyStyle("-translate-y-1/2 translate-x-[-275px] sm:translate-x-[-250px] md:translate-x-[-300px] lg:translate-x-[-400px]");
+            setRightPolyStyle("-translate-y-1/2 translate-x-[275px] sm:translate-x-[250px] md:translate-x-[300px] lg:translate-x-[400px]");
         } else if (option === 2) {
-            setLeftPolyStyle("-translate-y-1/2 translate-x-[300px]");
-            setRightPolyStyle("-translate-y-1/2 translate-x-[-300px]");
+            setLeftPolyStyle("-translate-y-1/2 translate-x-[-100px] md:translate-x-[10px] lg:translate-x-[100px] xl:translate-x-[300px]");
+            setRightPolyStyle("-translate-y-1/2 translate-x-[100px] md:translate-x-[-10px] lg:translate-x-[-100px] xl:translate-x-[-300px]");
         } else if (option === 3) {
             setLeftPolyStyle("-translate-y-[100%] -translate-x-1/2");
             setRightPolyStyle("translate-x-1/2");
@@ -61,13 +71,35 @@ function App() {
         )
         : null;
 
+    const descriptionItems = [
+        [
+            "Contributed daily by implementing new features and fixing recurring bugs across the project.",
+            "These contributions became an integral part of the final product, which is actively used by several hundred employees and has been sold to multiple companies.",
+            "Built a clean, scalable, and user-friendly UI using advanced React and Next.js patterns.",
+            "Applied efficient data structures and optimization techniques to ensure fast performance and smooth user experience."
+        ],
+        [
+            "Built a front-end Single-Page-Application (SPA) for a Speech-to-Text AI project.",
+            "Connected to back-end services via RESTful APIs.",
+            "Used React features including Hooks, React Router, and Redux for state and navigation management.",
+            "Developed modular and reusable components to improve code clarity and maintainability.",
+            "Styled the application using Tailwind CSS for fast, consistent UI design."
+        ],
+        [
+            "Built a full-stack email system with complete CRUD operations (Create, Read, Update, Delete).",
+            "Developed the back-end using Spring Boot and Spring MVC, exposing RESTful APIs for client interaction.",
+            "Designed and implemented the front-end using vanilla JavaScript, HTML, and CSS.",
+            "Applied object-oriented programming (OOP) principles to ensure a modular and maintainable codebase.",
+            "Used efficient data structures to enhance system performance and scalability."
+        ]
+    ];
 
     return (
         <>
             {SuccessPortal}
             <div className="overflow-hidden">
                 <div className="z-[200] h-[100px] flex items-center justify-center fixed left-1/2 -translate-x-1/2">
-                    <Navbar handleScrollSection={handleScrollSection}/>
+                    <Navbar handleScrollSection={handleScrollSection} thirdSectionHeight={thirdSectionHeight}/>
                 </div>
 
                 <div className="z-[200] fixed right-[-95px] top-1/2 -translate-y-1/2">
@@ -88,8 +120,10 @@ function App() {
                      className="relative bg-[linear-gradient(to_bottom,_#111111,_#2D2D2D)] w-screen h-screen flex flex-col justify-between overflow-hidden">
                     <div className="z-[150] h-full w-full flex items-center justify-center">
                         <div className="flex items-center justify-center flex-col">
-                            <p className="text-[100px] text-[#D7D7D7]">AmirParsa Rouhani</p>
-                            <p className="text-[40px] text-[#D7D7D7]">Software Developer</p>
+                            <p className="text-[35px] text-[#D7D7D7] sm:text-[50px] md:text-[75px] lg:text-[100px] xl:text[100px] 2xl:text[100px]">AmirParsa
+                                Rouhani</p>
+                            <p className="text-[20px] text-[#D7D7D7] sm:text-[25px] md:text-[30px] lg:text-[40px] xl:text[400px] 2xl:text[40px]">Software
+                                Developer</p>
                         </div>
                     </div>
                     <TopSmallPolygons/>
@@ -98,20 +132,17 @@ function App() {
                 <div id="section2"
                      className="relative bg-[linear-gradient(to_top,_#111111,_#2D2D2D)] w-screen h-screen flex flex-col justify-center items-center overflow-hidden">
                     <div
-                        className="z-[150] glass-div w-[50%] h-[60%] flex flex-col justify-center items-center text-[#D7D7D7] gap-12 p-10">
+                        className="z-[150] glass-div w-[80%] md:w-[65%] lg:w-[50%] flex flex-col justify-center items-center text-[#D7D7D7] gap-12 p-10">
                         <div className="flex flex-col justify-center items-start gap-3">
-                            <p className="text-3xl">About me</p>
-                            <p className="text-center text-md text-justify">I’m <b>AmirParsa Rouhani</b>, a Computer
-                                Science
-                                student at Amirkabir University of Technology and a software developer with experience
-                                in
-                                Python, Java, JavaScript, TypeScript, SQL, and C. I’m passionate about AI, game
-                                development,
-                                and creating practical, efficient applications. Through internships and hands-on
-                                projects,
-                                I’ve developed my problem-solving and collaboration skills, delivering real-world
-                                solutions
-                                in team environments.</p>
+                            <p className="text-xl md:text-2xl lg:text-3xl">About me</p>
+                            <p className="text-center text-xs md:text-sm lg:text-md text-justify">I’m <b>AmirParsa
+                                Rouhani</b>, a Computer
+                                Science student at Amirkabir University of Technology and a software developer with
+                                experience in Python, Java, JavaScript, TypeScript, SQL, and C. I’m passionate about AI,
+                                game development, and creating practical, efficient applications. Through internships
+                                and hands-on projects, I’ve developed my problem-solving and collaboration skills,
+                                delivering real-world solutions in team environments.
+                            </p>
                         </div>
                         <a
                             className="flex items-center justify-center cursor-pointer p-4 text-lg bg-[#111111] rounded-2xl hover:bg-[#1c1c1c] hover:scale-110 transition"
@@ -125,24 +156,25 @@ function App() {
                 </div>
 
                 <div id="section3"
-                     className="relative bg-[linear-gradient(to_bottom,_#111111,_#2D2D2D)] w-screen h-screen flex flex-col justify-center items-center overflow-hidden">
-                    <div className="flex justify-center items-center gap-5">
+                     ref={thirdSectionRef}
+                     className="relative bg-[linear-gradient(to_bottom,_#111111,_#2D2D2D)] w-screen min-h-screen p-5 flex flex-col justify-center items-center overflow-hidden">
+                    <div className="flex justify-center items-center gap-5 items-stretch flex-col lg:flex-row">
                         <ProjectItem title={"Panta"}
-                                     description={"Gained experience through internships and hands-on projects,\n" +
-                                         "                            improving both technical skills and project work. I have strong problem-solving skills and\n" +
-                                         "                            team collaboration."}
+                                     description={
+                                         descriptionItems[0]
+                                     }
                                      link={""}
                                      imgLink={""} imgAlt={""}/>
                         <ProjectItem title={"Ava"}
-                                     description={"Gained experience through internships and hands-on projects,\n" +
-                                         "                            improving both technical skills and project work. I have strong problem-solving skills and\n" +
-                                         "                            team collaboration."}
+                                     description={
+                                         descriptionItems[1]
+                                     }
                                      link={"https://github.com/amirparsaro/ava-front-end"}
                                      imgLink={ava} imgAlt={"ava"}/>
                         <ProjectItem title={"Milou"}
-                                     description={"Gained experience through internships and hands-on projects,\n" +
-                                         "                            improving both technical skills and project work. I have strong problem-solving skills and\n" +
-                                         "                            team collaboration."}
+                                     description={
+                                         descriptionItems[2]
+                                     }
                                      link={"https://github.com/amirparsaro/milou-web"}
                                      imgLink={milou} imgAlt={"milou"}/>
                     </div>
@@ -163,7 +195,7 @@ function App() {
                             setSuccessAlert(true);
                         }}
                            className="cursor-pointer">Contact: amirparsarouhani@gmail.com</p>
-                        <p>© 2025 AmirParsa Rouhani. Made with ❤️</p>
+                        <p>© {new Date().getFullYear()} AmirParsa Rouhani. Made with ❤️</p>
                     </div>
                 </div>
             </div>
