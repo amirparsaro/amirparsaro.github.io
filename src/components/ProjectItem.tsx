@@ -31,7 +31,8 @@ export const ProjectItem = ({title, description, link, imgLink, imgAlt}: Project
                         onClick={() => window.open(link, "_blank")}
                         className="text-blue-400 hover:text-blue-300 cursor-pointer transition flex items-center gap-1">
                         View on GitHub
-                        {<FaLink /> as JSX.Element}
+                        {/*@ts-ignore*/}
+                        <FaLink />
                     </p>
                 ) : (<p className="text-gray-400">Private project</p>)}
             </div>
